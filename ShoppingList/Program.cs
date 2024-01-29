@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using ShoppingList.Contracts;
 using ShoppingList.Data;
+using ShoppingList.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,9 @@ builder.Services.AddControllersWithViews();
 //Add EfCore
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ShoppingListDbContext>(opt => opt.UseSqlServer(connectionString));
+
+//Add Product service in IoCC(Inversion of Control Container
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 

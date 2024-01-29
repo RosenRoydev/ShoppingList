@@ -7,8 +7,16 @@ namespace ShoppingList.Data
     {
         public ShoppingListDbContext(DbContextOptions<ShoppingListDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>().
+                HasData
+                (new Product { Id = 1, Name = "Cheese" },
+                      new Product { Id = 2, Name = "Milk" });
+        }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductNote> ProductNotes { get; set; }
     }

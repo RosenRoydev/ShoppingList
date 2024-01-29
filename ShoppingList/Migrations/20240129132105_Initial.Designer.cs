@@ -11,7 +11,7 @@ using ShoppingList.Data;
 namespace ShoppingList.Migrations
 {
     [DbContext(typeof(ShoppingListDbContext))]
-    [Migration("20240126140812_Initial")]
+    [Migration("20240129132105_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,9 +34,8 @@ namespace ShoppingList.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasComment("Product Name");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 

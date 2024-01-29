@@ -11,8 +11,7 @@ namespace ShoppingList.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength (50)]
-        [Comment("Product Name")]
+        [StringLength (100)]
         public string Name { get; set; } = string.Empty;
         public List<ProductNote> ProductNotes { get; set; } = new List<ProductNote> ();
     }
